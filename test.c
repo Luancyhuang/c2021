@@ -1,53 +1,28 @@
 #include <stdio.h>
-//struct stu
-//{
-//  
-//
-//};
+#include <unistd.h>
 //int main()
 //{
-//  struct stu s;
-//  printf("%d\n",sizeof(s));//计算空结构体所占空间的大小
+//  int index = 0;
+//  const char *label = "|/-\\";
+//  while(1)
+//  {
+//    index %= 4;
+//    printf("[%c]\r\n",label[index]);
+//    index++;
+//    sleep(1);
+//  }
 //  return 0;
 //}
-//union un
-//{
-//  int num;
-//  char ch;
-//};
 //
-//int main()
-//{
-//  union un u;
-//  printf("%d\n",sizeof(union un));//计算联合体空间大小
-//  return 0;
-//}
-union un
-{
-  int a;
-  char b;
-};
+//倒计时功能
 int main()
 {
-  union un x;
-  x.a = 1;
-  if(x.b==1)
+  int i = 10;
+  for(;i>=0;i--)
   {
-    printf("小端\n");
-  }
-  else 
-  {
-    printf("大端\n");
+    printf("[%2d]\n",i);
+    sleep(1);
   }
   return 0;
 }
-
-
-
-
-
-
-
-
-
 
