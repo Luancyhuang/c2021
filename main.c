@@ -1,94 +1,20 @@
-#include <stdio.h>
-//int mysum(int top)
-//{
-//  int i = 1;
-//  int sum = 0;
-//  for(;i<top;i++)
-//  {
-//    sum += i;
-//  }
-//  return sum;
-//}
-//int main()
-//{
-//  printf("process begin running...!\n");
-//  int result = mysum(100);
-//  printf("result:%d\n",result);
-//  printf("process end running...!\n");
-//  return 0;
-//}
-//
-//#define init_val(a,b) do{\
-//	printf("before:%d %d\n",a,b);\
-//	a=0;\
-//	b=0;\
-//	printf("after:%d %d\n",a,b);\
-//        }while(0)
-//int main()
-//{
-//  int x = 10;
-//  int y = 20;
-//  int flag = 0;
-//  scanf("%d",&flag);
-//  if(flag)
-//  {
-//    init_val(x,y);
-//  }
-//  else 
-//  {
-//    x = 100;
-//    y = 200;  
-//  }
-//  return 0;
-//}
-//#define C 
-#define CPP
+#include "test.h"
+#define TOSTR(s) #s
 int main()
 {
-//  printf("hello,world!\n");
-//  printf("hello,bit!\n");
-//#else
-//  printf("hello,gcc!\n");
+//#ifdef M
+//#pragma message("M宏已经被定义了"）
 //#endif
-//
-//#if VERSION < 1
-//  printf("hello1\n");
-//#elif VERSION < 2
-//  printf("hello2\n");
-//#elif VERSION < 3
-//  printf("hello3\n");
-//#else
-//  printf("hello,other!\n");
-//#endif
-//#if defined(VERSION)
-//  printf("hello version!\n");
-//#else
-//  printf("hello.other!\n");
-//#endif
-//#if (defined(C) && defined(CPP))
-//  printf("hello,c and cpp!\n");
-//#else 
-//  printf("hello.other!\n");
-//#endif
-//#if defined(C)
-//    #if defined(CPP)
-//	printf("hello.CPP!\n");
-//    #endif
-//	printf("hello.C!\n");
-//#else
-//	printf("hello.other!\n");
-//#endif
-#if defined(C)
-	printf("hello C!\n");
-#elif defined(CPP)
-	printf("hello CPP!\n");
-#else
-	printf("hello.other\n");
-#endif
+ // printf("%s %d\n",__FILE__,__LINE__);
+//#line 60 "hehe.c"
+ // printf("%s %d\n",__FILE__,__LINE__);
+  //printf("hello bit\n");
+  //printf("hello bit""hello,world\n");
+  //const char *str = "hello,bit""hello,world\n";
+  //printf(str);
+  //printf("PI:"STR(3.1415926)"\n");
+  char str[64] = {0};
+  strcpy(str,TOSTR(12345));
+  printf("%s\n",str);
   return 0;
 }
-
-
-
-
-
