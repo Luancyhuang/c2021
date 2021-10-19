@@ -1,32 +1,22 @@
 #include <stdio.h>
-//指定比特位置0
-//0&0 0&1 
-//1&1 1&0 1和任何数按位与都不影响
-#define clrbits(x,n) (x &= (~(1<<(n-1))))
-void showbits(int x)
-{
-  int num = sizeof(x)*8-1;
-  while(num>=0)
-  {
-    if(x&(1<<num))
-    {
-      printf("1");    
-    }
-    else
-    {
-      printf("0");    
-    }
-    num--;
-  }
-  printf("\n");
-}
+#include <stdlib.h>
+int g_val2;
+int g_val1 = 10;
+
 int main()
 {
-  int x = 0xFFFFFFFF;
-  clrbits(x,1);
-  clrbits(x,2);
-  clrbits(x,3);
-  clrbits(x,32);
-  showbits(x);
+  printf("code adr:%p\n",main);
+  const char *str = "hello.bit!";
+  printf("read only:%p\n",str);
+  printf("init g_val1:%p\n",&g_val1);
+  printf("uninit g_val2:%p\n",&g_val2);
+  
+  char *p = (char*)malloc(sizeof(char));
+  printf("heap adr:%p\n",p);
+  printf("stack adr:%p\n",&str);
+  printf("stack adr:%p\n",&p);
+  
+  free(p);
+  p = NULL;
   return 0;
 }
