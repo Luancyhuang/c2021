@@ -1,15 +1,12 @@
 #include <stdio.h>
-int my_strlen(const char*str)
+
+int main(int argc,char *argv[])
 {
-  if(*str == '\0')
+  int i = 0;
+  for(i=0;i<argc;i++)
   {
-    return 0;  
+    printf("%s\n",argv[i]);  
   }
-  return (1+my_strlen(str+1));
-}
-int main()
-{
-  int ret = my_strlen("abcd1234");
-  printf("%d\n",ret);
   return 0;
 }
+
