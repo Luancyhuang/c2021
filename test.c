@@ -1,75 +1,28 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <assert.h>
-
-#define N 10
-
-typedef struct node
+void func(int N)
 {
-  int data;
-  struct node *next;
-}node_t;
-node_t *alloc_node(int x)
-{
-  node_t *node =(node_t*)malloc(sizeof(node_t));
-  if(node == NULL)
+  int count = 0;
+  for(int i=0;i<N;i++)
   {
-    perror("malloc fail!");
-    exit(1);
+    for(int j=0;j<N;j++)
+    {
+      count++;    
+    }  
   }
-  node->data = x;
-  node->next = NULL;
-  return node;
-}
-void insert_node(node_t *head ,int x)
-{
-  assert(head);
-  node_t *newnode = alloc_node(x);
-  newnode->next = head->next;
-  head->next = newnode;
-}
-void show_list(node_t *head)
-{
-  assert(head);
-  node_t *p = head->next; 
- 
-  while(p)
+  for(int k=0;k<2*N;k++)
   {
-    printf("%d ",p->data);
-    p=p->next;
+    count++; 
   }
-  printf("\n");
+  int M = 10;
+  while(M--)
+  {
+    count++;
+  } 
+  printf("%d\n",count);
 }
-
-void delete_node(node_t *head)
-{
-  assert(head);
- 
-  node_t *p =head->next;
-  head->next = p->next;
-  
-  free(p);
-  p = NULL;
-}
-
 int main()
 {
-  node_t *head = alloc_node(0);
-  printf("插入测试...\n");
-  for(int i=1;i<=N;i++)
-  {
-    insert_node(head,i);//头插
-    show_list(head);
-    sleep(1);  
-  }
-  printf("删除测试...\n");
-  for(int i=1;i<=N;i++)
-  {
-    delete_node(head);//头删
-    show_list(head);
-    sleep(1); 
-  }
+  int n = 10;
+  func(n);  
   return 0;
 }
-
