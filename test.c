@@ -1,28 +1,29 @@
 #include <stdio.h>
-void func(int N)
+//数组nums包含从0到n的所有整数，但其中缺了一个。请编写代码找出那个缺失的整数。你有办法在O(n)时间内完成吗？
+int missingNumber(int *num,int numbersize)
 {
-  int count = 0;
-  for(int i=0;i<N;i++)
+  int x = 0;
+  //0和[0,n]之间的数异或
+  for(int i=0;i<=numbersize;i++)
   {
-    for(int j=0;j<N;j++)
-    {
-      count++;    
-    }  
+    x ^= i;
   }
-  for(int k=0;k<2*N;k++)
+  //再和数组中的值异或
+  for(int i=0;i<numbersize;i++)
   {
-    count++; 
+    x ^= num[i];
   }
-  int M = 10;
-  while(M--)
-  {
-    count++;
-  } 
-  printf("%d\n",count);
+  return x;//返回x [0,N]缺省值
 }
 int main()
 {
-  int n = 10;
-  func(n);  
+  int arr[10] = {0};
+  
+  for(int i=0;i<10;i++)
+  {
+    scanf("%d",&arr[i]);
+  }
+  int numbersize = sizeof(arr)/sizeof(arr[0]);
+  printf("%d\n",missingNumber(arr,numbersize));
   return 0;
 }
