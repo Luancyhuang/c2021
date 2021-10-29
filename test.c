@@ -1,65 +1,32 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-struct listnode
+struct listnode* reverselist(truct listnode* head)
 {
-  int val;
-  struct listnode* next;
-};
-
-struct listnode* removeelements(struct listnode* head,int val)
-{
-  struct listnode *prev = NULL,*cur = head;
-  while(cur)
+  if(head == NULL)
+    return NULL;
+  //给定初始条件
+  struct listnode* n1,*n2,*n3;
+  n1 = NULL;
+  n2 = head;
+  n3 = head->next;
+  //实现功能
+  while(n2)
   {
-    if(cur->val == val)
-    {
-      //头删
-      if(cur == head)
-      {
-        head = cur->next;
-	free(cur);
-	cur = head;
-      }
-      //中间删
-      else
-      {
-        //停下来，删除
-        prev->next = cur->next;
-        free(cur);
-        cur = prev->next;
-      }
-    }
-    else
-    {
-      //迭代往后走
-      prev = cur;
-      cur = cur->next;
-    }  
+    //翻转的核心逻辑
+    n2->next = NULL;
+    //迭代走
+    n1 = n2;
+    n2 = n3;
+    if(n3)
+      n3 = n3->next;  
   }
-  return head;
+  return n1;
 }
 
 int main()
 {
-  struct listnode* n1 = (struct listnode*)malloc(sizeof(struct listnode));    
-  struct listnode* n2 = (struct listnode*)malloc(sizeof(struct listnode));    
-  struct listnode* n3 = (struct listnode*)malloc(sizeof(struct listnode));    
-  struct listnode* n4 = (struct listnode*)malloc(sizeof(struct listnode));    
-  struct listnode* n5 = (struct listnode*)malloc(sizeof(struct listnode));     
-  n1->val = 7;
-  n2->val = 7;
-  n3->val = 7;
-  n4->val = 7;
-  n5->val = 7;
-  
-  n1->next = n2;
-  n2->next = n3;
-  n3->next = n4;
-  n4->next = n5;
-  n5->next = NULL;
-  
-  struct listnode* head = removeelements(n1,7);
-  
+   
+
+
   return 0;
 }
