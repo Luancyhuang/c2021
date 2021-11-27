@@ -1,59 +1,34 @@
 #include <stdio.h>
-//带有副作用的宏传参
-//#define MAX(X,Y) ((X)>(Y)?(X):(Y))
-
-/*int Max(int x,int y)
-{
-  return x > y ? x : y; 
-}
 
 int main()
 {
-  int a = 5;
-  int b = 8;
-  //1.宏的参数是不计算直接替换进去的
-  //2.替换进去后才参与计算
-  //int m = MAX(a++,b++);
-
-  //函数的参数是计算后再传进去的
-  int m = Max(a++,b++);
-  printf("%d\n",m);//8
-  printf("%d\n",a);//6
-  printf("%d\n",b);//9
-  return 0;
-}*/
-
-//函数传参不能传类型
-//宏可以传类型
-
-/*#include <stdlib.h>
-#define MALLOC(num,type) \
-	(type*)malloc(num*sizeof(type))
-
-int main()
-{
-  int* p = MALLOC(100,int);
-  return 0;
-}*/
-
-
-
-int main()
-{
-  int arr[SZ];
-  
-  for(int i=0;i<SZ;i++)
+  //1.打开文件
+  FILE* pf = fopen("data.txt","r");
+  if(pf == NULL)
   {
-    arr[i] = i;  
+    perror("fopen");
+    return -1;
   }
+  //2.读文件
+  //随机读写
+  //int ch = fgetc(pf);
+  //printf("%c\n",ch);
+  fseek(pf,2,SEEK_SET);
+  int ch1 = fgetc(pf);
+  printf("%c\n",ch1);
   
-  for(int i=0;i<SZ;i++)
-  {
-    printf("%d ",arr[i]);
-  }
-
-  printf("\n");
-  
+  fseek(pf,-2,SEEK_CUR);
+  int ch2 = fgetc(pf);
+  printf("%c\n",ch2);
+  //计算文件指针相对于起始位置的偏移量
+  int ret = ftell(pf);
+  printf("%d\n",ret);
+  //文件指针回来
+  rewind(pf);
+  int ch3 = fgetc(pf);
+  printf("%c\n",ch3);
+  //3.关闭文件
+  fclose(pf);
+  pf = NULL;
   return 0;
 }
-
