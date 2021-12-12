@@ -45,7 +45,7 @@
 //...
 //n! = (n-1)!*n
 
-int main()
+/*int main()
 {
   int n = 0;
   int sum = 0;
@@ -57,6 +57,36 @@ int main()
     sum += ret;  
   }
   printf("%d\n",sum);
+  return 0;
+}*/
+
+
+
+int main()
+{
+  int arr[] = {1,2,3,4,5,6,7,8,9,10};
+  //在有序数组arr 中找7
+  //找到了打印下标，找不到打印：找不到
+  
+  int i = 0;
+  int k = 7;
+  int sz = sizeof(arr)/sizeof(arr[0]);
+
+  for(i = 0;i < sz; i++)
+  {
+    if(arr[i] == k)
+    {
+      printf("找到了，下标是:%d",i);
+      break;    
+    }  
+  }
+  //i<sz;找到了
+  //i == sz,没有找到
+  if(i == sz)
+  {
+    printf("找不到\n");  
+  }
+
   return 0;
 }
 
